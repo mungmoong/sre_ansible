@@ -1,5 +1,5 @@
 ---
-- hosts: ansible-target-01
+- hosts: all
   remote_user: ansible
   sudo: yes
 
