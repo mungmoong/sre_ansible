@@ -1,0 +1,10 @@
+---
+- hosts: ansible-target-01
+  remote_user: ansible
+  sudo: yes
+
+  tasks:
+  - name: Update repositories and install "maven" pakage
+    apt:
+      name: maven
+      update_cache: yes

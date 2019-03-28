@@ -1,0 +1,7 @@
+---
+- name: execute Roles
+  hosts: ansible-target-01
+  become: yes
+
+  roles:
+    - { role: roh-test01 }

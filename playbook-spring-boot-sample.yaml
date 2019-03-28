@@ -1,0 +1,21 @@
+---
+- hosts: ansible-target-01
+  remote_user: ansible
+  sudo: yes
+
+  tasks:
+  - name: Install a list of packages
+    apt:
+      name: "{{ install_packages }}"
+      update_cache: yes
+    vars:
+      install_packages:
+      - maven
+
+  - shell: git clone https://github.com/OldBlackJoe/spring_boot_simple.git
+    register: git_clone_result
+  - debug: var=git_clone_result
+
+  - shell: cd spring_boot_simple; mvn clean package
+    register: mvn_clean_result
+  - debug: var=mvn_clean_result

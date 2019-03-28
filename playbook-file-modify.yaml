@@ -1,0 +1,12 @@
+---
+- hosts: ansible-target-01
+  remote_user: ansible
+  sudo: yes
+
+  tasks:
+  - name: write the config file
+    template: src=/etc/hosts dest=/home/ansible/hosts
+  - name: config file owner
+    command: /bin/chown ansible:ansible /home/ansible/hosts
+  - name: config file auth
+    command: /bin/chmod 644 /home/ansible/hosts

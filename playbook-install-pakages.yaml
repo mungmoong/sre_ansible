@@ -1,0 +1,19 @@
+---
+- hosts: ansible-target-01
+  remote_user: ansible
+  sudo: yes
+
+  tasks:
+  - name: Install a list of packages
+    apt:
+      name: "{{ install_packages }}"
+      update_cache: yes
+    vars:
+      install_packages:
+      - maven
+
+  - debug: msg="System {{ inventory_hostname}} has uuid {{ ansible_product_uuid }}"
+  - shell: java -version
+    register: result
+  - debug: var=result
+

@@ -1,0 +1,13 @@
+---
+- hosts: ansible-target-01
+  remote_user: ansible
+  sudo: yes
+
+  tasks:
+  - name: Remove a list of packages
+    apt:
+      name: "{{ remove_packages }}"
+      state: absent
+    vars:
+      remove_packages:
+      - maven
